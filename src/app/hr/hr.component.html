@@ -1,0 +1,247 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ul class="navbar-nav float-right">
+      <!-- <li class="nav-item  dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Eng
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+      </li> -->
+      <li class="nav-item  dropdown">
+        <img src="../assets/img/profile_default.jpg"  class="img-rounded" width="30" height="30"> 
+      <a style="float: right;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       &nbsp;{{ 'Hello' | translate }}.<b> {{usrName}}</b></a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Role: HR</a>
+          <a class="dropdown-item" (click)="logOut()">Log Out</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<main>
+  <section>
+      <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse top-nav" id="navbarTogglerDemo01">
+              <ul class="navbar-nav nav nav-pills mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                <a class="nav-link" href="#">{{ 'Policies' | translate }} <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">{{ 'Claims' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">{{ 'Requests' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">{{ 'Accounting' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">{{ 'Reports' | translate }}</a>
+                 </li>
+              </ul>
+            </div>
+          </nav>
+          </div>
+          <div class="row middle-container">
+              <div class="col-md-8 col-lg-8 col-sm-12">
+                  <div class="row inner-top">	
+                      <label class="col-md-3 col-lg-2 col-sm-12"> 
+                        {{ 'SelectPolicy' | translate}} <span class="req">*</span>
+                      </label>
+                      <div class="col-md-3 col-lg-3 col-sm-3"> 
+                        <select class="custom-select form-control" type="text" name="IdProof">
+                          <option>Group Health</option>
+                          <option>Group Health2</option>
+                        </select>	
+                      </div>
+                      <div class="col-md-6 col-lg-7 col-sm-12"> 
+                        <div class="manage-btn">
+                          <input name="login-submit" class=" btn btn-blue" value="{{ 'BulkUpload' | translate }}">
+                        </div>
+                      </div>
+                    </div>
+                  <!--Tabs-->
+                  <div class="left-panel container-shadow">
+                      <ul class="nav nav-mid-tabs" role="tablist">
+                        <li class="nav-item">
+                        <a class="nav-link active" href="#policy" role="tab" data-toggle="tab">{{ 'PolicyOverview' | translate }} </a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#topup" role="tab" data-toggle="tab">{{ 'Top-up' | translate }}</a>
+                        </li>
+                      </ul>
+                      <div class="inner-mid ">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane hr-panel panel-mid active" id="policy">
+                                <div class="table-outer table-responsive-sm section-outer">
+                                  <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Employee Id</th>
+                                        <th scope="col">{{ 'Name' | translate }}</th>
+                                        <th scope="col">{{ 'SumInsured' | translate }}</th>
+                                        <th scope="col">{{ 'NoOfDep' | translate }}</th>
+                                        <th scope="col">{{ 'Status' | translate }}</th>
+                                        <th scope="col">{{ 'PrimaryCard' | translate }}</th>
+                                        <th scope="col">{{ 'StartDate' | translate }}</th>
+                                        <th scope="col">{{ 'EndDate' | translate }}</th>
+                                      </tr>
+                                      </thead>
+                                    <tbody>
+                                      <tr *ngFor="let usrPol of userPolicies">
+                                        <td>{{usrPol.EmployeeId}}</td>
+                                        <td>{{usrPol.EmployeeName}}</td>
+                                        <td>{{usrPol.sumInsured}}</td>
+                                        <td>{{usrPol.NoOfDependents}}</td>
+                                        <td>{{usrPol.status | translate}}</td>
+                                        <td>{{usrPol.primaryCardNumber}}</td>
+                                        <td>{{usrPol.startDate | date: 'dd-MMM-yyyy'}}</td>
+                                        <td>{{usrPol.endDate | date: 'dd-MMM-yyyy'}}</td>
+                                      </tr>
+                                    </tbody>
+                                    </table>
+                              </div>
+                            </div>
+                            <!--Top up plan tab-->
+                            <div role="tabpanel" class="tab-pane hr-panel panel-mid" id="topup">
+                                <div class="table-outer table-responsive-sm section-outer">
+                                  <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">{{ 'Employee' | translate }}  Id</th>
+                                        <th scope="col">{{ 'Employee' | translate }} {{ 'Name' | translate }} </th>
+                                        <th scope="col">{{ 'Member' | translate}}</th>
+                                        <th scope="col">{{ 'Relation' | translate }}</th>
+                                        <th scope="col">{{ 'DOB' | translate }}</th>
+                                        <th scope="col">{{ 'Age' | translate }}</th>
+                                        <th scope="col">{{ 'Top-up' | translate }} Plan</th>
+                                        <th scope="col">{{ 'EndDate' | translate }}</th>
+                                      </tr>
+                                      </thead>
+                                    <tbody>
+                                      <tr *ngFor="let empTop of employeeTopups">
+                                        <td>{{empTop.employeeId}}</td>
+                                        <td>{{empTop.employeeName}}</td>
+                                        <td>{{empTop.memberName}}</td>
+                                        <td>{{empTop.relation}}</td>
+                                        <td>{{empTop.dob | date: 'dd/MM/yyyy'}}</td>
+                                        <td>{{empTop.age}}</td>
+                                        <td>{{empTop.topupPlans[0] | translate}}</td>
+                                        <td>{{empTop.endDate | date: 'dd-MMM-yyyy'}}</td>
+                                      </tr>
+                                    </tbody>
+                                    </table>
+                                </div> 
+                            </div>
+                        </div>        
+                      </div>
+                    </div>
+              </div>
+              <!--Right side column-->
+              <div class="col-md-4">
+                  <div class="solid-bck right-panel container-shadow">
+                    <h5>{{ 'BulletinBoard' | translate }}</h5>
+                    <ul class="bulletin">
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                      </li>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                      </li>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                      </li>
+                      
+                    </ul>
+                  </div>	
+                  <div class="solid-bck right-panel container-shadow">
+                    <h5> {{ 'NewsArticle' | translate }}</h5>
+                    <ul class="bulletin">
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                      </li>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                      </li>
+                      <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                      </li>
+                      
+                    </ul>
+                  </div>
+                </div>
+               
+      
+          </div>    
+  </section>
+</main>
+<footer class="page-footer font-small special-color-dark">
+  <div  class="container-fluid">
+    <div  class="row bottom-container">
+      <div class="col-md-8 col-lg-8 col-sm-12">
+        <div class="navbar nav-footer footer-1">
+          <h6><a>{{'Operating'| translate}} {{'Procedures' | translate}}</a> </h6>
+          <span>|</span>
+          <h6><a>{{'Operating'| translate}} {{'Manuals' | translate}}</a> </h6>
+          <span>|</span>
+          <h6><a>{{'SOW'| translate}}</a> </h6>
+          <span>|</span>
+          <h6><a>{{ 'SLAs' | translate}}</a> </h6>
+          <span>|</span>
+          <h6><a>{{'Policy'| translate}} {{'Images'| translate}}</a> </h6>
+          <span>|</span>
+          <h6><a>{{'Contract'| translate}} {{'Images'| translate}}</a> </h6>
+          <span>|</span>
+          <h6><a>{{'ImportantLinks'| translate}}</a> </h6>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-4 col-sm-12">
+        <div class="opp-box">
+        <i class="fa fa-commenting-o" aria-hidden="true"></i> Help
+        </div>
+      </div>
+    </div>
+    <div  class="row footer-top py-3">
+      <div class="col-md-10 col-sm-10">
+        <i class="fa fa-twitter  fa-twitter-big" aria-hidden="true"></i>{{ 'Footertext' | translate }}
+      </div>
+      <div class="col-md-2 col-sm-2 text-right social-icons">
+        <i class="fa fa-linkedin" aria-hidden="true"></i>
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="footer-copyright ">
+      <div class="row footer-down">
+        <div class="col-md-3 col-sm-3">
+          <a class="navbar-footer-brand" href="#"></a>
+        </div>
+        <div class="col-md-9 col-sm-9">
+          <div class="row footer-nav float-right">
+            <div class="navbar nav-footer">
+              <h6><i class="fa fa-footer-icon"></i><a href="#">Marsh</a> </h6>
+              <h6><i class="fa fa-footer-icon"></i><a href="#">Guy Carpenter</a> </h6>
+              <h6><i class="fa fa-footer-icon"></i><a href="#">Mercer</a> </h6>
+              <h6><i class="fa fa-footer-icon"></i><a href="#">Oliver Wayman</a> </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,10 @@
+<!-- <p>You can pass an existing component as content of the modal window. In this case remember to add content component
+    as an <code>entryComponents</code> section of your <code>NgModule</code>.</p> -->
+    <div *ngIf="isEdit">
+    <i  (click)="open()" class="fa fa-pencil"></i>
+   </div>
+   <div *ngIf="!isEdit">
+        <!-- <i  (click)="open()" class="fa fa-pencil"></i> -->
+        <input type="button" (click)="open()" (saveClick) = "saveModal($event)"  class=" btn btn-blue" value="{{ 'AddDependent' | translate }}">
+    </div>
+    

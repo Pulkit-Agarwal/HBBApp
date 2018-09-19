@@ -1,0 +1,93 @@
+                <table class="table">
+                    <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">{{ 'Name' | translate }}</th>
+                      <th scope="col">{{ 'Relation' | translate }}</th>
+                      <th scope="col">{{ 'DOB' | translate }}</th>
+                      <th scope="col">{{ 'Age' | translate }} </th>
+                      <th scope="col">{{ 'Gender' | translate }}</th>
+                      <th scope="col">{{ 'CardNumber' | translate }}</th>
+                      <th scope="col">{{ 'Status' | translate }}</th>
+                      <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let dependent of dependents index as i">
+                        <td>
+                            {{i + 1}}
+                        </td>
+                      <td>
+                          {{dependent.name}}
+                      </td>
+                      <td>
+                          {{dependent.relation}}
+                      </td>
+                      <td>
+                          {{dependent.dob | date: 'dd-MMM-yyyy'}}
+                      </td>
+                      <td>
+                          {{dependent.age | translate}}
+                      </td>
+                      <td>
+                          {{dependent.gender | translate}}
+                      </td>
+                      <td>
+                          {{dependent.cardNumber}}
+                      </td>
+                      <td>
+                        {{dependent.status | translate}}
+                      </td>
+                      <!-- <td><i  (click)="open(dependent)"  class="fa fa-pencil"></i>&nbsp;&nbsp;<i class="fa fa-trash"></i></td> -->
+                      <td><ngbd-modal-component 
+                        [dependent] = dependent 
+                        [isEdit]= true 
+                        [dependents] =dependents
+                        ></ngbd-modal-component>
+                        &nbsp;&nbsp;
+                        <i class="fa fa-trash" (click)="deleteDependent(dependent)"></i></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                  <div class="footer-btn">
+                      <!-- <input data-toggle="modal" data-target="#addMember"  class=" btn btn-blue" value="Add Memeber"> -->
+                      <td><ngbd-modal-component 
+                        [dependent] = newDependent 
+                        [isEdit]= false 
+                        [dependents] =dependents
+                        ></ngbd-modal-component>
+                  </div>
+                    
+                    <!--Edit Modal-->
+                   
+                      
+                    <!--Edit Modal ends here-->
+                    <!-- <ng-template #content let-modal>
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          
+                            <div class="form-group">
+                              <input type="text" [(ngModel)] = "dependent.name" >
+                              <label for="dateOfBirth">Date of birth</label>
+                              <div class="input-group">
+                                <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                                <div class="input-group-append">
+                                  <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                                </div>
+                              </div>
+                            </div>
+                          
+                          
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-dark" (click)="close()">Save</button>
+                        </div>
+                      </ng-template>
+                      
+                      <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+                      <!-- <NgbdModalContent></NgbdModalContent> -->

@@ -1,0 +1,127 @@
+<div class="row">
+    <div class="col-md-3 col-lg-3 col-xl-2 col-sm-4 mid-panel-tabs">
+      <ul class="nav nav-tabs nav-vertical nopadding" id="myTab" role="tablist">
+        <li class="nav-item active">
+        <a class="nav-link active" data-toggle="tab" href="#Features" role="tab" aria-controls="home">{{ 'Features' | translate}}</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#PolBenefits" role="tab" aria-controls="profile">{{ 'Benefits' | translate }}</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#PremiumTopup" role="tab" aria-controls="messages">{{ 'PremiumTopup' | translate }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#PremiumTopup" role="tab" aria-controls="messages"></a>
+            </li>
+      </ul>
+    </div>
+    <div  class="col-sm-12 mid-panel-heading">
+    <h6>Features</h6>
+    </div>
+    <div class="col-md-9 col-xl-10 col-lg-9 col-sm-9 tab-content">
+        <div class="row">
+        <div class="row tab-panel active" role="tabpanel" style="width:100%" id="Features">
+          <div class="section-outer">
+              <div class="row inner-top col-md-8 col-lg-8 col-sm-8">	
+                  <label class=""> 
+                      {{ 'Topupplanoptions' | translate }}<span class="req">*</span>
+                  </label>
+                  &nbsp;&nbsp;
+                  <div class=""> 
+                    <select class="custom-select form-control" type="text" name="IdProof">
+                      <option>{{ 'EnhancedSumInsured' | translate }}</option>
+                    </select>	
+                  </div>
+                  <!-- <br><br>
+                  <p>Under this top-up plan you can double your sum insured by paying nominal additional premium.
+                      Increased Sum Insured over your basic limit will have a co-payment of 10%.
+                      This clause of 10% will not be applicable in case of critical 
+                      illnesses listed in main policy Annexure-A</p> -->
+                </div>
+                <div class="col-md-4 col-xl-4 col-lg-4 col-sm-4">
+                   <div>This test</div>
+                </div>
+          <div class="row">
+            <div class="col-md-8 col-xl-8 col-lg-8 col-sm-8">
+       <!-- Features -->
+            <p>{{ 'TopupInfoMessage' | translate }}</p>
+            </div>
+            <div class=" col-md-4 col-xl-4 col-lg-4 col-sm-4">
+               <div class="text-center panel-body"> <h6>{{ 'Dependents' | translate }}</h6> </div>
+                <table class="table">
+                    <thead>
+                    
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let dependent of dependents">
+                      <td>
+                        <tr>
+                          <label> {{ 'Name' | translate }} :  </label> {{dependent.name}}
+                        </tr>
+                        <tr>
+                            <label>{{ 'DOB' | translate }} :  </label>  {{dependent.dob | date: 'dd-MMM-yyyy'}}
+                        </tr>
+                        <tr>
+                            <label>{{ 'Relation' | translate }} :  </label> {{dependent.relation}}
+                        </tr>
+                      </td>
+                      
+                     
+                    </tr>
+                    </tbody>
+                  </table>
+                  <div class="footer-btn">
+                      <!-- <input data-toggle="modal" data-target="#addMember"  class=" btn btn-blue" value="Add Memeber"> -->
+                      <td><ngbd-modal-component 
+                        [dependent] = newDependent 
+                        [isEdit]= false 
+                        [dependents] =dependents
+                        ></ngbd-modal-component>
+                  </div>
+            </div>
+            
+          </div>
+          <div class="row">
+            &nbsp;
+          </div>
+          <div class="row">
+              <div class="col-md-4 col-lg-4"> 
+                  <select class="custom-select form-control" type="text" name="IdProof">
+                    <option>{{ 'PaymentThrough' | translate }} </option>
+                  </select>	
+              </div>
+              <div class="col-md-6 col-lg-6"> 
+                  <label class="form-control">{{ 'DeductMonthMessage' | translate }}</label>
+              </div>
+              <div>
+                  <input type="button" (click)="confirm()" class=" btn btn-login" value="{{ 'Confirm' | translate }}">
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="text-center col-md-12" *ngIf="isAddonAdded">
+                  <ngb-alert  type = "success" (close)="close()" [dismissible]="true">
+                      {{'SaveSuccessMessage' | translate  }}
+                  </ngb-alert>
+              </div>
+          </div>
+
+          </div>
+       </div>
+       <div class="col-sm-12 mid-panel-heading">
+          <h6>Benefits</h6>
+        </div>		
+       <div role="tabpanel"  class="row panel-login tab-panel fade" style="width:100%;" id="PolBenefits">
+          <!--List of Dep-->
+          <h1>Benefits</h1>
+       </div>
+        <div class="col-sm-12 mid-panel-heading">
+            <h6>Premium Top up</h6>
+          </div>		
+          <div role="tabpanel" class="row  tab-panel fade" style="width:100%" id="PremiumTopup">
+         <!--Policy Benfits-->
+         <h1>Premium </h1>
+          </div>
+      </div>
+    </div>
+  </div>

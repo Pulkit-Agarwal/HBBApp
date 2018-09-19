@@ -1,0 +1,335 @@
+<!-- <div class="row">
+   
+    <div class="col-md-3">
+      <input type="button" name="MyPolicies" class="form-control btn login" value="My Policies">
+    </div>
+    <div class="col-md-3">
+        <input type="button" name="MyClaims" class="form-control btn" value="My Claims">
+      </div>
+      <div class="col-md-3">
+          <input type="button" name="Requests" class="form-control btn" value="Requests">
+        </div>
+        <div class="col-md-3">
+            <input type="button" name="Payments" class="form-control btn" value="Payments">
+          </div>
+      
+  
+  </div> -->
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <ul class="navbar-nav float-right">
+        <!-- <li class="nav-item  dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Eng
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+        </li> -->
+        <li class="nav-item  dropdown">
+          <img src="../assets/img/profile_default.jpg"  class="img-rounded" width="30" height="30"> 
+        <a style="float: right;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         &nbsp;{{ 'Hello'| translate}}.<b> {{usrName}}</b></a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#"> {{usrRoleType | translate}}</a>
+            <a class="dropdown-item" (click)="logOut()">Log Out</a>
+          </div>
+        
+         
+        </li>
+  
+      </ul>
+    </div>
+  </nav>
+  
+  <main>
+      <section>
+ <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse top-nav" id="navbarTogglerDemo01">
+          <ul class="navbar-nav nav nav-pills mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+            <a class="nav-link" href="#">{{ 'MyPolicies' | translate}} <span class="sr-only">(current)</span></a>
+            </li>
+            &nbsp;
+            <li class="nav-item">
+            <a class="nav-link" href="#">{{ 'MyClaims' | translate }}</a>
+            </li>
+            &nbsp;
+            <li class="nav-item">
+            <a class="nav-link" href="#">{{ 'Requests' | translate }}</a>
+            </li>
+            &nbsp;
+            <li class="nav-item">
+            <a class="nav-link" href="#">{{ 'Payments' | translate }}</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+ </div>
+ <div class="row middle-container">
+    <div class="col-md-8 col-lg-8 col-sm-12">
+        <div class="row inner-top">	
+            <label class="col-md-3 col-lg-2 col-sm-12"> 
+              {{ 'SelectPolicy' | translate }}<span class="req">*</span>
+            </label>
+            <div class="col-md-3 col-lg-3 col-sm-3"> 
+              <select class="custom-select form-control" type="text" name="IdProof">
+                <option>Group Health</option>
+                <option>Group Health2</option>
+              </select>	
+            </div>
+            <div class="col-md-6 col-lg-7 col-sm-12"> 
+              <div class="float-right">
+                <input name="login-submit" type="button" class=" btn btn-blue" value="{{ 'ManageProfile'|translate }}">
+              </div>
+            </div>
+          </div>
+          <div class="left-panel container-shadow">
+            
+              <div class="left-panel container-shadow">
+                  <ul class="nav nav-mid-tabs" role="tablist">
+                    <li class="nav-item">
+                    <a class="nav-link active" href="#policy" role="tab" data-toggle="tab">{{'PolicyOverview'| translate}} </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#topup" role="tab" data-toggle="tab">{{ 'Top-up' | translate }}</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#endorsements" role="tab" data-toggle="tab">{{ 'Endorsements' | translate }}</a>
+                    </li> 
+                    <li class="nav-item">
+                    <a class="nav-link" href="#enrolment" role="tab" data-toggle="tab">{{ 'Enrolment' | translate }}</a>
+                    </li>
+                  </ul>
+                  <div class="inner-mid ">
+                    <div class="tab-content">
+                      <div role="tabpanel" class="tab-pane panel-mid active" id="policy">
+                        <div class="row">
+                          <div class="col-md-3 col-lg-3 col-xl-2 col-sm-4 mid-panel-tabs">
+                            <ul class="nav nav-tabs nav-vertical nopadding" id="myTab" role="tablist">
+                              <li class="nav-item active">
+                              <a class="nav-link active" data-toggle="tab" href="#Details" role="tab" aria-controls="home">{{ 'PolicyDetails' | translate }}</a>
+                              </li>
+                              <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#Dependents" role="tab" aria-controls="profile">{{ 'ListOfDependents' | translate }}</a>
+                              </li>
+                              <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#Benefits" role="tab" aria-controls="messages">{{ 'PolicyBenifits' | translate }}</a>
+                              </li>
+                              <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#download" role="tab" aria-controls="settings">{{ 'PolicyDownload' | translate }}</a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div  class="col-sm-12 mid-panel-heading">
+                          <h6>{{'PolicyDetails' | translate}}</h6>
+                          </div>
+                          <div class="col-md-9 col-xl-10 col-lg-9 col-sm-9 tab-content">
+                              <div class="row">
+                              <div class="row tab-panel active  "role="tabpanel" style="width:100%" id="Details">
+                                  <div class="col-md-3 col-xl-3 col-lg-3 col-sm-3">
+                                      <div class="panel-group">
+                                      <label> {{ 'PolicyName' | translate }} </label>
+                                      <div> {{policy.policyName}}</div>
+                                      </div>
+                                      <div class="panel-group">
+                                          <label> {{ 'Insurer' | translate }} </label>
+                                          <div> {{policy.insurer}}</div>
+                                      </div>
+                                      <div class="panel-group">
+                                            <label>{{'NetPremium' | translate}}  </label>
+                                            <div>{{'$' | translate}} {{policy.netPremium}}</div>
+                                      </div>
+                                    </div>
+                                      <div class="col-md-3 col-xl-3 col-lg-3 col-sm-3">
+                                        <div class="panel-group">
+                                          <label>  {{ 'PolicyType' | translate }} </label>
+                                          <div> {{policy.policyType}}</div>
+                                        </div>
+                                        <div class="panel-group">
+                                            <label>{{ 'Insured' | translate }}  </label>
+                                            <div> {{policy.insured}}</div>
+                                          </div>
+                                          <div class="panel-group">
+                                              <label> {{ 'Taxes' | translate}}  </label>
+                                            <div>{{'$' | translate}}  {{policy.taxes}}</div>
+                                          </div>
+                                      </div>
+                                        <div class="col-md-3 col-xl-3 col-lg-3 col-sm-3">
+                                          <div class="panel-group">
+                                            <label> {{ 'StartDate' | translate }}  </label>
+                                            <div> {{policy.startDate | date: 'dd/MM/yyyy'}}</div>
+                                          </div>
+                                          <div class="panel-group">
+                                              <label> {{ 'Dependents' | translate }}  </label>
+                                              <div> {{policy.dependents}}</div>
+                                          </div>
+                                          <div class="panel-group">
+                                              <label>{{ 'GrossPremium' | translate}} </label>
+                                              <div>{{'$' | translate}}  {{policy.grossPremium}}</div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-3 col-xl-3 col-lg-3 col-sm-3">
+                                            <div class="panel-group">
+                                              <label>{{ 'EndDate' | translate }}  </label>
+                                                <div> {{policy.endDate | date: 'dd/MM/yyyy'}}</div>
+                                            </div>
+                                            <div class="panel-group">
+                                                <label> {{ 'SumInsured' | translate }}  </label>
+                                                  <div> {{'$' | translate}} {{policy.sumInsured}}</div>
+                                              </div>
+                                          </div> 
+                             </div>
+                             <div class="col-sm-12 mid-panel-heading">
+                                <h6>List Of Dependents</h6>
+                              </div>		
+                             <div role="tabpanel"  class="row panel-login tab-panel fade" style="width:100%;" id="Dependents">
+                                <div class="table-outer">
+                                  <app-dependent [userId]= userId></app-dependent>
+                                  </div>
+                             </div>
+                              <div class="col-sm-12 mid-panel-heading">
+                                  <h6>Policy Benefits</h6>
+                                </div>		
+                                <div role="tabpanel" class="row  tab-panel fade" style="width:100%" id="Benefits">
+                                  <div class="section-outer">
+                                    <h6>{{ 'Coverage' | translate }}</h6>
+                                    <p>{{ 'CoverageDes' | translate }}
+                                    </p>
+                                    <h6>{{ 'Exclusion' | translate }}</h6>
+                                    <p>{{ 'ExclusionDes'| translate}}
+                                    </p>
+                                    <div class="policy-footer">
+                                      <input type="button" class=" btn btn-blue" value="PDF">&nbsp;<input class=" btn btn-blue" value="Video">
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div  class="col-sm-12 mid-panel-heading">
+                          <h6>Top-up</h6>
+                          </div>
+                      <div role="tabpanel" class="tab-pane panel-mid" id="topup">
+                        
+                          <app-emptopup [userId]= userId></app-emptopup>  
+                           
+                          
+                            
+                        
+                       </div>
+                    </div>
+                  </div>
+                </div>
+    
+          </div>
+
+    </div>
+    <div class="col-md-4">
+        <div class="solid-bck right-panel container-shadow">
+          <h5>{{ 'BulletinBoard' | translate}}</h5>
+          <ul class="bulletin">
+            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            </li>
+            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            </li>
+            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            </li>
+            
+          </ul>
+        </div>	
+        <div class="solid-bck right-panel container-shadow">
+          <h5>{{ 'NewsArticle' | translate}}</h5>
+          <ul class="bulletin">
+            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            </li>
+            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            </li>
+            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+</div>
+
+ 
+</section>
+</main>
+<footer class="page-footer font-small special-color-dark">
+		<div  class="container-fluid">
+			<div  class="row bottom-container">
+				<div class="col-md-8 col-lg-8 col-sm-12">
+					<div class="navbar nav-footer footer-1">
+									  <h6><a>{{'HospitalsClinic'| translate}}</a> </h6>
+									  <span>|</span>
+									  <h6><a>{{'Contacts'| translate}}</a> </h6>
+									  <span>|</span>
+									  <h6><a>{{'FormsDownload'| translate}}</a> </h6>
+									  <span>|</span>
+									  <h6><a>{{'DisPromo'| translate}}</a> </h6>
+									  <span>|</span>
+									  <h6><a>{{'Communications'| translate}}</a> </h6>
+									  <span>|</span>
+									  <h6><a>{{'ImportantLinks'| translate}}</a> </h6>
+						</div>
+				</div>
+				<div class="col-md-4 col-lg-4 col-sm-12">
+					<div class="opp-box">
+					<i class="fa fa-commenting-o" aria-hidden="true"></i> Help
+					</div>
+				</div>
+			</div>
+			<div  class="row footer-top py-3">
+				<div class="col-md-10 col-sm-10">
+					<i class="fa fa-twitter  fa-twitter-big" aria-hidden="true"></i>{{ 'Footertext' | translate }}
+				</div>
+				<div class="col-md-2 col-sm-2 text-right social-icons">
+					<i class="fa fa-linkedin" aria-hidden="true"></i>
+					<i class="fa fa-twitter" aria-hidden="true"></i>
+					<i class="fa fa-facebook" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div class="footer-copyright ">
+			  <div class="row footer-down">
+					<div class="col-md-3 col-sm-3">
+						<a class="navbar-footer-brand" href="#"></a>
+					</div>
+					<div class="col-md-9 col-sm-9">
+						<div class="row footer-nav float-right">
+							<div class="navbar nav-footer">
+							  <h6><i class="fa fa-footer-icon"></i><a href="#">Marsh</a> </h6>
+							  <h6><i class="fa fa-footer-icon"></i><a href="#">Guy Carpenter</a> </h6>
+							  <h6><i class="fa fa-footer-icon"></i><a href="#">Mercer</a> </h6>
+							  <h6><i class="fa fa-footer-icon"></i><a href="#">Oliver Wayman</a> </h6>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
